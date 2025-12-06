@@ -1,0 +1,12 @@
+:root{ --bg:#fafafa; --fg:#111; --muted:#666; }
+*{ box-sizing:border-box; }
+html,body,#root{ height:100%; margin:0; font-family: system-ui, Roboto, Segoe UI, Arial; color:var(--fg); background:var(--bg); }
+.layout{ display:grid; grid-template-columns: 220px 1fr; min-height:100vh; }
+.sidebar{ background:#f1f5f9; padding:1rem; }
+.sidebar nav{ display:flex; flex-direction:column; gap:.5rem; }
+.sidebar a{ text-decoration:none; padding:.5rem .7rem; border-radius:10px; }
+.sidebar a.active{ background:#2e7d32; color:#fff; }
+.content{ padding:1rem; }
+label{ font-size:.9rem; }
+input, select{ font-size:.95rem; }
+.err{ color:#b71c1c; }

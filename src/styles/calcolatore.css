@@ -1,0 +1,67 @@
+.calc-grid{ display:grid; grid-template-columns: 1fr 1.2fr 1fr; gap:1rem; }
+.card{ background:#fff; border-radius:14px; padding:1rem; box-shadow:0 4px 14px rgba(0,0,0,.06); }
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+.grid2 label{ display:flex; flex-direction:column; gap:.25rem; font-size:.95rem; }
+.grid2 input, .grid2 select{ padding:.5rem; border:1px solid #ddd; border-radius:10px; }
+
+
+.activities .row{ display:flex; align-items:center; gap:.5rem; margin:.25rem 0; }
+.activities input{ width:90px; }
+
+
+.toolbar{ display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.75rem; }
+.search{ display:flex; gap:.5rem; }
+.filters-inline label{ margin-right:.75rem; }
+
+
+.foods-list{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:.5rem; max-height:220px; overflow:auto; }
+.food-btn{ display:flex; align-items:center; justify-content:space-between; padding:.5rem .7rem; border:1px solid #eee; border-radius:10px; background:#fafafa; cursor:pointer; }
+.food-btn:hover{ background:#f2f8f2; }
+.bubbles{ display:flex; align-items:center; gap:.35rem; }
+.dot{ font-size:18px; line-height:1; }
+.dot-danger{ color:#b71c1c; }
+.dot-warning{ color:#f39c12; }
+
+
+.actions{ display:flex; gap:.5rem; margin:.75rem 0; }
+button.danger{ padding:.5rem .8rem; border-radius:10px; border:none; background:#b71c1c; color:#fff; }
+button:disabled{ opacity:.5; cursor:not-allowed; }
+
+
+.table-wrap{ overflow:auto; max-height:260px; border:1px solid #eee; border-radius:10px; }
+.table{ width:100%; border-collapse:separate; border-spacing:0; }
+.table th, .table td{ padding:.4rem .5rem; border-bottom:1px solid #eee; text-align:left; }
+.table tr.selected{ background:#e8f5e9; }
+
+
+.kpis{ grid-template-columns:repeat(5,1fr); }
+.totals{ display:grid; gap:.5rem; margin:.75rem 0; }
+.kpi{ background:#f7f7f7; border-radius:12px; padding:.6rem .8rem; display:flex; flex-direction:column; gap:.2rem; }
+.kpi span{ font-size:.8rem; color:#666; }
+.kpi strong{ font-size:1.1rem; }
+
+
+.charts{ display:grid; gap:.7rem; }
+.chartcard h3{ margin:.2rem 0 .5rem; }
+.legend{ font-size:.8rem; color:#666; }
+
+
+/* Tooltip */
+.tipwrap{ position:relative; display:inline-flex; align-items:center; margin-left:.4rem; }
+.tipicon{ font-size: .95rem; cursor:help; }
+.tooltip{ position:absolute; top:100%; left:0; transform:translateY(.35rem); background:#111; color:#fff; padding:.4rem .6rem; border-radius:8px; font-size:.8rem; white-space:nowrap; z-index:10; }
+
+
+/* IG badges */
+.ig{ padding:.15rem .4rem; border-radius:999px; font-size:.75rem; border:1px solid #ddd; }
+.ig-low{ background:#e8f5e9; }
+.ig-mid{ background:#fff8e1; }
+.ig-high{ background:#ffebee; }
+.ig-unknown{ background:#eceff1; }
+
+
+/* Tags */
+.tags{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.35rem; }
+.tag{ border:1px solid #ddd; padding:.25rem .5rem; border-radius:999px; background:#fff; }
+.tag.on{ background:#2e7d32; color:#fff; border-color:#2e7d32; }
+.chk{ display:flex; align-items:center; gap:.5rem; margin-top:.5rem; }

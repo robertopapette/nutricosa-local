@@ -1,0 +1,115 @@
+/* ==============================
+   🌿 MENU LATERALE — NUTRITY2 PROBASE (VERSIONE STABILE)
+   ============================== */
+
+/* Area principale del menù */
+.menu-panel {
+  width: 14rem;
+  background: linear-gradient(to bottom, #000000, #14532d);
+  color: white;
+  border-right: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3); /* ombra morbida */
+}
+
+/* Scroll verticale */
+.menu-panel nav {
+  overflow-y: auto;
+  flex: 1;
+  scroll-behavior: smooth;
+}
+.menu-panel nav::-webkit-scrollbar {
+  width: 6px;
+}
+.menu-panel nav::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #facc15, #22c55e);
+  border-radius: 4px;
+}
+
+/* Barra superiore (titolo Menù) */
+.menu-panel .menu-header {
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-panel .menu-header h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;
+  margin: 0;
+}
+
+/* Pulsante X e indietro */
+.menu-panel button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #facc15;
+  transition: color 0.2s ease;
+}
+.menu-panel button:hover {
+  color: #22c55e;
+}
+
+/* Voci principali */
+.menu-panel nav div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  color: #fff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.menu-panel nav div:hover {
+  background: linear-gradient(to right, #facc15, #22c55e);
+  color: #000;
+}
+
+/* Sottomenu */
+.menu-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu-panel ul li {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.menu-panel ul li:hover {
+  background: linear-gradient(to right, #22c55e, #facc15);
+  color: #000;
+}
+
+/* Pulsante apri/chiudi menù */
+.menu-toggle {
+  background-color: #0d3b66;
+  color: #facc15;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.menu-toggle:hover {
+  transform: scale(1.05);
+  background-color: #14532d;
+}
+
+/* Mobile overlay */
+@media (max-width: 768px) {
+  .menu-panel {
+    width: 14rem;
+    box-shadow: 6px 0 18px rgba(0, 0, 0, 0.4);
+  }
+  .menu-panel nav {
+    padding-bottom: 2rem;
+  }
+}

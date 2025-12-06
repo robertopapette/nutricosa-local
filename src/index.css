@@ -1,0 +1,133 @@
+/* 🌿 Nutrity – Stile base globale */
+
+/* RESET MODERNO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  background-color: #f8fafc;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* 🔧 Fix layout sdoppiato */
+body {
+  overflow: hidden; /* evita scroll doppio e sdoppiamento layout */
+}
+
+/* LINK */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #2563eb;
+}
+
+/* SCROLLBAR ELEGANTE */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a7c7e7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7aa9d9;
+}
+
+/* GRADIENTE BASE (verde → azzurro) */
+.bg-gradient-nutrity {
+  background: linear-gradient(to bottom, #c7f9cc, #a9d6e5);
+}
+
+/* OMBRE SOFT */
+.shadow-md {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+.shadow-xl {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* BOTTONI STANDARD */
+button {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* CARD BASE */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* TITOLI */
+h1, h2, h3 {
+  color: #2f6636;
+  font-weight: 700;
+}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.3rem; }
+
+/* TESTO EVIDENZIATO */
+.highlight {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* TOOLTIP ℹ️ */
+[title] {
+  position: relative;
+}
+[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: #2563eb;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+/* PULSANTI COLORATI */
+.btn-blue { background-color: #1e3a8a; color: white; }
+.btn-blue:hover { background-color: #1d4ed8; }
+.btn-green { background-color: #2f6636; color: white; }
+.btn-green:hover { background-color: #3cb043; }
+.btn-gold { background-color: #e5c100; color: #333; }
+.btn-gold:hover { background-color: #f1d52e; }
+
+/* ANIMAZIONI BASE */
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE BASE */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+  .card { padding: 1rem; }
+}
