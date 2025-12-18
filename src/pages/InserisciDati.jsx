@@ -78,7 +78,7 @@ export default function AggiornaDati() {
     return (
       <PageContainer
         titolo="⚠️ Nessun profilo attivo"
-        sottotitolo="Vai su 'Chi sei tu' per creare o selezionare un profilo."
+        sottotitolo="Vai su 'Il tuo profilo personale' per creare o selezionare un profilo."
       >
         <div
           style={{
@@ -110,7 +110,11 @@ export default function AggiornaDati() {
           lineHeight: 1.6,
         }}
       >
-        <BottoneIndietro path="/aggiorna-dati" testo="Torna indietro" />
+        <BottoneIndietro
+          path="/aggiorna-i-tuoi-dati"
+          state={{ returnTo: "InserisciDati" }}
+          testo="Torna a Aggiorna i tuoi dati"
+        />
 
         <h2
           style={{
@@ -203,7 +207,7 @@ export default function AggiornaDati() {
                                 isNaN(risultato.bfPerc)
                               ) {
                                 setMessaggio(
-                                  "⚠️ Completa i dati in 'Chi sei tu' per poter calcolare la massa grassa."
+                                  "⚠️ Completa i dati in 'Il mio profilo personale' per poter calcolare la massa grassa."
                                 );
                                 return;
                               }
@@ -392,7 +396,7 @@ export default function AggiornaDati() {
               fontSize: "0.95rem",
             }}
           >
-            Hai bisogno di aiuto?
+            Hai bisogno di aiuto con le misure?
           </button>
         </div>
       </div>

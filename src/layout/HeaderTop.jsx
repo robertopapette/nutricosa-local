@@ -1,4 +1,4 @@
-// 🌿 HeaderTop.jsx — versione stabile con ref condiviso menù
+// 🌿 HeaderTop.jsx — versione con pulsanti e titolo responsive
 import { Menu, Music4 } from "lucide-react";
 import { theme } from "../theme";
 
@@ -8,9 +8,7 @@ export default function HeaderTop({
   titolo,
   mostraAudio,
   toggleAudio,
-  iconeAperte,
-  setIconeAperte,
-  bottoneMenuRef, // ✅ riceve il ref da AppLayout
+  bottoneMenuRef,
 }) {
   const effettoGlow = (el, attivo) => {
     if (!el) return;
@@ -53,15 +51,26 @@ export default function HeaderTop({
         padding: "0 1.2rem",
         boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
         zIndex: 9999,
-        borderTopLeftRadius: "8px",
-        borderTopRightRadius: "8px",
         overflow: "hidden",
       }}
     >
+
       {/* 🍔 Pulsante menù */}
       <button
+        className="header-btn"
         ref={bottoneMenuRef}
-        onClick={() => setAperto(!aperto)}
+        onClick={() => {
+          const nuovoStato = !aperto;
+          setAperto(nuovoStato);
+
+          // 🔥 Reset scroll del menù ogni volta che lo apri
+          if (!aperto) {
+            setTimeout(() => {
+              const nav = document.querySelector("aside nav");
+              if (nav) nav.scrollTop = 0;   // 💚 Questo è il reset VERO
+            }, 0);
+          }
+        }}
         onMouseEnter={(e) => effettoGlow(e.currentTarget, true)}
         onMouseLeave={(e) => effettoGlow(e.currentTarget, false)}
         style={{
@@ -77,6 +86,7 @@ export default function HeaderTop({
 
       {/* 🌿 Titolo */}
       <h1
+        className="header-title"
         style={{
           fontWeight: "bold",
           color: theme.colori.accento,
@@ -89,32 +99,24 @@ export default function HeaderTop({
           margin: "0 1rem",
         }}
       >
-        {titolo || "NutriCoSa"}
+        {window.innerWidth < 480 ? "N.Spiral" : titolo || "Nutrition Spiral"}
       </h1>
 
       {/* 🔘 Pulsanti destri */}
-      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <button
-          onClick={() => setIconeAperte(!iconeAperte)}
-          onMouseEnter={(e) => effettoGlow(e.currentTarget, true)}
-          onMouseLeave={(e) => effettoGlow(e.currentTarget, false)}
-          style={{
-            ...stilePulsante,
-            color: iconeAperte ? "#facc15" : theme.colori.accento,
-          }}
-        >
-          Icone rapide
-        </button>
+      <div className="header-right">
+
 
         <button
+          className="header-btn"
           onMouseEnter={(e) => effettoGlow(e.currentTarget, true)}
           onMouseLeave={(e) => effettoGlow(e.currentTarget, false)}
           style={stilePulsante}
         >
-          👤 Login
+          Login
         </button>
 
         <button
+          className="header-btn"
           onClick={toggleAudio}
           onMouseEnter={(e) => effettoGlow(e.currentTarget, true)}
           onMouseLeave={(e) => effettoGlow(e.currentTarget, false)}
@@ -126,7 +128,6 @@ export default function HeaderTop({
           }}
         >
           <Music4 size={18} />
-          <span>Audio</span>
         </button>
       </div>
     </header>

@@ -5,21 +5,24 @@ import { theme } from "../theme";
 
 /**
  * 🔙 BottoneIndietro
- * Versione intelligente — se non riceve un path, torna alla pagina precedente.
- *
- * Props:
- * - path: (string) percorso specifico (opzionale)
- * - testo: (string) testo visualizzato accanto alla freccia
- * - colore: (string) colore opzionale (default: verde scuro del tema)
+ * Versione definitiva:
+ * - se riceve `path` → naviga lì
+ * - se riceve anche `state` → lo passa
+ * - se NON riceve `path` → navigate(-1)
  */
-export default function BottoneIndietro({ path = null, testo = "Torna indietro", colore }) {
+export default function BottoneIndietro({
+  path = null,
+  state = null,
+  testo = "Torna indietro",
+  colore,
+}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
     if (path) {
-      navigate(path);
+      navigate(path, state ? { state } : undefined);
     } else {
-      navigate(-1); // 🔙 torna alla pagina precedente
+      navigate(-1);
     }
   };
 
@@ -43,7 +46,8 @@ export default function BottoneIndietro({ path = null, testo = "Torna indietro",
       onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
       onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
     >
-      <ArrowLeft size={18} /> {testo}
+      <ArrowLeft size={18} />
+      {testo}
     </button>
   );
 }

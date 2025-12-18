@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <App />
       </WorkInProgressGate>
     ) : (
-      <InternationalWIP />
+      <App />
     )}
   </React.StrictMode>
 );

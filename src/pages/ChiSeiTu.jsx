@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PageContainer from "../components/PageContainer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef } from "react";
+
 import {
   getProfili,
   setProfili,
@@ -13,6 +15,8 @@ import { config } from "../config";
 
 export default function ChiSeiTu() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const bottoniRef = useRef({});
   const [profili, setListaProfili] = useState([]);
   const [profiloAttivo, setProfiloAttivo] = useState(null);
 
@@ -26,6 +30,21 @@ export default function ChiSeiTu() {
     setListaProfili(getProfili());
     setProfiloAttivo(getProfiloAttivo());
   }, []);
+
+  useEffect(() => {
+  const target = location.state?.returnTo;
+  if (!target) return;
+
+  const el = bottoniRef.current[target];
+  if (el) {
+    requestAnimationFrame(() => {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    });
+  }
+}, [location.state]);
 
   // 🔹 Crea nuovo profilo
   const handleCreaProfilo = () => {
@@ -65,14 +84,14 @@ export default function ChiSeiTu() {
 
   return (
     <PageContainer
-      titolo="👤 Chi sei tu"
-      sottotitolo="Scopri il tuo profilo e crea il tuo percorso personale"
+      titolo="Il tuo profilo personale "
+      sottotitolo="Così potremo offrirti un'esperienza davvero personalizzata"
     >
       <div
         style={{
-          maxWidth: "850px",
+          maxWidth: "clamp(320px, 92vw, 820px)",
           margin: "0 auto",
-          padding: "2rem",
+          padding: "clamp(1rem, 3vw, 1.6rem)",
           background: "#f7f5f2",
           border: "1px solid #000",
           borderRadius: "10px",
@@ -96,10 +115,21 @@ export default function ChiSeiTu() {
             marginBottom: "1.5rem",
           }}
         >
-          Non vediamo l’ora di scoprirlo assieme a te.  
-          Compila il tuo profilo perché solo con un piano realmente personalizzato
-          potrai raggiungere i tuoi obiettivi e migliorarti giorno dopo giorno.  
-          Noi saremo al tuo fianco, passo dopo passo, per accompagnarti nella giusta direzione. 🌿
+          Questo è il primo passo del tuo percorso che ti porterà a scoprirlo.  
+          Creare il tuo profilo non è un obbligo, ma un modo semplice per permettere a 
+          <strong> Nutrition Spiral</strong> di conoscerti e accompagnarti con precisione,
+          rispetto e consapevolezza.
+
+          <br /><br />
+
+          Le tue informazioni rimangono sul tuo dispositivo e servono solo a offrirti
+          indicazioni più chiare, suggerimenti mirati e un’esperienza davvero personale.
+          Non c’è nulla da temere: qui sei al sicuro, e ogni scelta nasce per aiutarti.
+
+          <br /><br />
+
+          Prenditi il tuo tempo.  
+          Scegli un nome per il tuo profilo… e il tuo percorso comincerà da qui. 🌿
         </p>
 
         {/* === Sezione profili salvati === */}
@@ -113,7 +143,9 @@ export default function ChiSeiTu() {
             marginBottom: "1.5rem",
           }}
         >
-          <h3 style={{ marginBottom: "0.8rem", color: "#2c2c2c" }}>
+          <h3
+            ref={(el) => (bottoniRef.current["Profilo"] = el)}
+            style={{ marginBottom: "0.8rem", color: "#2c2c2c" }}>
             📋 Profili salvati
           </h3>
 
@@ -166,8 +198,9 @@ export default function ChiSeiTu() {
                         color: "#000",
                         border: "1px solid #000",
                         borderRadius: "5px",
-                        padding: "0.3rem 0.4rem",
+                        padding: "clamp(0.25rem, 1vw, 0.45rem) clamp(0.4rem, 1.2vw, 0.7rem)",
                         cursor: "pointer",
+                        fontSize: "clamp(0.75rem, 1.8vw, 0.95rem)",
                         fontWeight: "600",
                       }}
                     >
@@ -182,8 +215,9 @@ export default function ChiSeiTu() {
                         color: "#fff",
                         border: "1px solid #000",
                         borderRadius: "5px",
-                        padding: "0.3rem 0.4rem",
+                        padding: "clamp(0.25rem, 1vw, 0.45rem) clamp(0.4rem, 1.2vw, 0.7rem)",
                         cursor: "pointer",
+                        fontSize: "clamp(0.75rem, 1.8vw, 0.95rem)",
                         fontWeight: "600",
                       }}
                     >
@@ -203,8 +237,8 @@ export default function ChiSeiTu() {
                 color: "#fff",
                 border: "1px solid #000",
                 borderRadius: "8px",
-                padding: "0.6rem 1.2rem",
-                fontSize: "1rem",
+                padding: "clamp(0.45rem, 1.4vw, 0.85rem) clamp(0.9rem, 2vw, 1.3rem)",
+                fontSize: "clamp(0.85rem, 2vw, 1.1rem)",
                 fontWeight: "700",
                 cursor: "pointer",
               }}

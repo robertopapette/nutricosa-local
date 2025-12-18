@@ -5,15 +5,46 @@ import { theme } from "../theme";
 
 /**
  * 🔙 BottoneIndietro1
- * Versione dedicata alle singole pagine delle DIETE.
- * Torna sempre alla pagina "/diete-famose".
+ * Versione robusta per layout con scroll interno (main#page-scroll)
+ * Mantiene la posizione di scroll tornando indietro.
  */
-export default function BottoneIndietro1({ testo = "Indietro", colore }) {
+export default function BottoneIndietro1({ testo = "Torna a Diete famose", colore }) {
   const navigate = useNavigate();
+
+  const handleBack = () => {
+    const container = document.getElementById("page-scroll");
+    const scrollY = container ? container.scrollTop : 0;
+
+    // salva posizione
+    sessionStorage.setItem("restoreScrollMain", scrollY);
+
+    // torna indietro nella history
+    navigate(-1);
+
+    // ripristino robusto (attende layout stabile)
+    let attempts = 0;
+    const restore = () => {
+      const c = document.getElementById("page-scroll");
+      const saved = sessionStorage.getItem("restoreScrollMain");
+
+      if (c && saved !== null && c.scrollHeight > c.clientHeight) {
+        c.scrollTop = parseInt(saved, 10);
+        sessionStorage.removeItem("restoreScrollMain");
+        return;
+      }
+
+      if (attempts < 15) {
+        attempts++;
+        requestAnimationFrame(restore);
+      }
+    };
+
+    requestAnimationFrame(restore);
+  };
 
   return (
     <button
-      onClick={() => navigate("/diete-famose")}
+      onClick={handleBack}
       style={{
         display: "flex",
         alignItems: "center",

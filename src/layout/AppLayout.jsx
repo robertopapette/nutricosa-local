@@ -1,6 +1,6 @@
 // ✅ AppLayout.jsx — versione stabile e riallineata con il nuovo menù NutriCoSa
-import { useState, useRef } from "react";
-import { Outlet } from "react-router-dom";
+import  React, { useState, useRef, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import HeaderTop from "./HeaderTop";
 import MenuFisso from "./MenuFisso";
 import { theme } from "../theme";
@@ -25,10 +25,30 @@ import Impostazioni from "../pages/Impostazioni";
 import Donazione from "../pages/Donazione";
 import FontiUfficiali from "../pages/FontiUfficiali";
 import MappaSito from "../pages/MappaSito";
-
 import AudioPlayer from "../components/AudioPlayer";
 import IconeGeneratore from "../components/IconeGeneratore";
 import ConsistencyCheck from "../utils/ConsistencyCheck";
+// 📄 Import delle anteprime leggere
+import HomePreview from "../previews/homepreview";
+import ChiSiamoPreview from "../previews/chisiamopreview";
+import ChiSeiTuPreview from "../previews/chiseitupreview";
+import AggiornaDatiPreview from "../previews/aggiornadatipreview";
+import CSUPreview from "../previews/csupreview";
+import InfoCSUPreview from "../previews/infocsupreview";
+import DieteFamosePreview from "../previews/dietefamosepreview";
+import RicettarioPreview from "../previews/ricettariopreview";
+import PrincipiPreview from "../previews/principipreview";
+import SupplementiPreview from "../previews/supplementi";
+import AttivitaFisicaPreview from "../previews/attivitafisicapreview";
+import ObiettivoPreview from "../previews/obiettivopreview";
+import ConsigliPreview from "../previews/consiglipreview";
+import LegendaIconePreview from "../previews/legendaiconepreview";
+import NotifichePreview from "../previews/notifichepreview";
+import ImpostazioniPreview from "../previews/impostazionipreview";
+import DonazionePreview from "../previews/donazionepreview";
+import FontiPreview from "../previews/fontipreview";
+import MappaSitoPreview from "../previews/mappasitopreview";
+
 
 // 🔹 Pagina neutra per voci non ancora collegate
 function InCostruzione() {
@@ -52,28 +72,33 @@ export default function AppLayout() {
   const [mostraAudio, setMostraAudio] = useState(false);
   const [iconeAperte, setIconeAperte] = useState(false);
   const bottoneMenuRef = useRef(null);
+  const location = useLocation();
+  useEffect(() => {
+    const main = document.querySelector("main");
+    if (main) main.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname]);
 
   // 🔹 Mappa ID → componente pagina (aggiornata e coerente)
   const previewMap = {
-    1: <Home />,
-    2: <ChiSiamo />,
-    3: <ChiSeiTu />,
-    4: <AggiornaDati />, // ✅ corretto
-    5: <Calcolatore />,
-    6: <InfoCalcolatore />,
-    7: <DieteFamose />,
-    8: <Ricettario />,
-    9: <PrincipiNutrizione />,
-    10: <Supplementi />,
-    11: <AttivitaFisica />,
-    12: <Obiettivo />,
-    13: <Consigli />,
-    14: <LegendaIcone />,
-    15: <Notifiche />,
-    16: <Impostazioni />,
-    17: <Donazione />,
-    18: <FontiUfficiali />,
-    19: <MappaSito />,
+    1: <HomePreview />,
+    2: <ChiSiamoPreview  />,
+    3: <ChiSeiTuPreview  />,
+    4: <AggiornaDatiPreview  />, // ✅ corretto
+    5: <CSUPreview  />,
+    6: <InfoCSUPreview  />,
+    7: <DieteFamosePreview  />,
+    8: <RicettarioPreview  />,
+    9: <PrincipiPreview  />,
+    10: <SupplementiPreview  />,
+    11: <AttivitaFisicaPreview  />,
+    12: <ObiettivoPreview  />,
+    13: <ConsigliPreview  />,
+    14: <LegendaIconePreview  />,
+    15: <NotifichePreview  />,
+    16: <ImpostazioniPreview  />,
+    17: <DonazionePreview />,
+    18: <FontiPreview  />,
+    19: <MappaSitoPreview  />,
   };
 
   const anteprima = previewId ? previewMap[previewId] || <InCostruzione /> : null;
@@ -92,7 +117,7 @@ export default function AppLayout() {
       <HeaderTop
         aperto={aperto}
         setAperto={setAperto}
-        titolo="NutriCoSa"
+        titolo="Nutrition Spiral"
         mostraAudio={mostraAudio}
         toggleAudio={() => setMostraAudio(!mostraAudio)}
         iconeAperte={iconeAperte}
@@ -111,6 +136,7 @@ export default function AppLayout() {
 
         {/* 🖥 Area contenuti */}
         <main
+          id="page-scroll"
           style={{
             flex: 1,
             marginLeft: aperto ? theme.layout.larghezzaMenu : "0",
@@ -123,7 +149,19 @@ export default function AppLayout() {
             background: "rgba(255,255,255,0.95)",
           }}
         >
-          {anteprima || <Outlet />}
+          <div
+            key={previewId ?? "contenuto-base"}
+            style={{
+              opacity: 0,
+              animation: "fadeInFast 0.08s forwards",
+              paddingTop: "56px",
+            }}
+          >
+            {aperto && anteprima
+              ? React.cloneElement(anteprima)
+              : <Outlet />
+          }  
+          </div>  
         </main>
       </div>
 

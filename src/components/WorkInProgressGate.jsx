@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-const PASSWORD = import.meta.env.VITE_WIP_PASSWORD;
+const PREVIEW_TOKEN = import.meta.env.VITE_PREVIEW_ACCESS_TOKEN;
+const ACCESS_KEY = "ns_preview_access";
 
 export default function WorkInProgressGate({ children }) {
   const [unlocked, setUnlocked] = useState(false);
@@ -9,7 +10,7 @@ export default function WorkInProgressGate({ children }) {
 
   // Controlla se l'utente ha già sbloccato l'accesso
   useEffect(() => {
-    const hasAccess = localStorage.getItem("ns_access_natale25") === "true";
+    const hasAccess = localStorage.getItem(ACCESS_KEY) === "true";
     if (hasAccess) {
       setUnlocked(true);
     }
@@ -17,8 +18,8 @@ export default function WorkInProgressGate({ children }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input === PASSWORD) {
-      localStorage.setItem("ns_access", "true");
+    if (input === PREVIEW_TOKEN) {
+      localStorage.setItem(ACCESS_KEY, "true");
       setUnlocked(true);
     } else {
       setError("Password errata");

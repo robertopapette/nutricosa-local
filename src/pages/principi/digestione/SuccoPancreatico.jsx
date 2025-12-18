@@ -1,14 +1,63 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/PageContainer";
-import BottoneIndietro from "../../../components/BottoneIndietro";
 
 export default function SuccoPancreatico() {
+  const navigate = useNavigate();
+
+/*
+const tornaIndietro = () => {
+  navigate("/principi", {
+    state: { returnTo: "Succo pancreatico" },
+  });
+};
+*/
+  const tornaIndietro = () => {
+    navigate("/principi/digestione", { 
+      state: { returnTo: "Succo pancreatico" }, 
+   });
+  };
+
   return (
-    <PageContainer titolo="Succo pancreatico" sottotitolo="Enzimi per la digestione di proteine, carboidrati e grassi">
-      <BottoneIndietro />
+    <PageContainer
+      titolo="Succo pancreatico"
+      sottotitolo="Gli enzimi che completano la digestione"
+    >
+      <button
+        onClick={tornaIndietro}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "none",
+          border: "none",
+          color: "#000000ff",
+          cursor: "pointer",
+          fontSize: "0.95rem",
+          fontWeight: "500",
+          marginBottom: "1rem",
+          padding: "4px 0",
+        }}
+      >
+        ← Torna indietro
+      </button>
 
       <div style={stileBox}>
-        <p>Contenuti in sviluppo per la sezione Succo pancreatico.</p>
+        <p>
+          Il succo pancreatico è un liquido ricco di enzimi prodotti dal pancreas
+          e riversati nell’intestino tenue. Contiene tre categorie principali di
+          enzimi: amilasi per la digestione dei carboidrati, lipasi per la
+          scomposizione dei grassi e proteasi (come tripsina e chimotripsina) per
+          la digestione delle proteine.
+        </p>
+
+        <p>
+          Questo succo è fondamentale perché completa gran parte della digestione
+          chimica, riducendo i nutrienti in molecole semplici assorbibili. La sua
+          secrezione è regolata dagli ormoni intestinali e si attiva subito dopo il
+          passaggio del chimo acido dallo stomaco. Un pancreas efficiente è
+          indispensabile per un assorbimento ottimale dei nutrienti.
+        </p>
       </div>
     </PageContainer>
   );

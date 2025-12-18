@@ -10,7 +10,7 @@ const mockAlimenti = [
     diete_compatibili: ["Zona", "Mediterranea", "Paleo"],
     allergeni: [],
     macro: "Proteine",
-    colore: "verde",
+    colore: "grigio",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const mockAlimenti = [
     diete_compatibili: ["Mediterranea", "Zona"],
     allergeni: ["Glutine"],
     macro: "Carboidrati",
-    colore: "giallo",
+    colore: "grigio",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const mockAlimenti = [
     diete_compatibili: ["Vegetariana"],
     allergeni: ["Lattosio"],
     macro: "Lipidi",
-    colore: "rosso",
+    colore: "grigio",
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const mockAlimenti = [
     diete_compatibili: ["Paleo", "Mediterranea"],
     allergeni: ["Pesce"],
     macro: "Proteine",
-    colore: "verde",
+    colore: "grigio",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const mockAlimenti = [
     diete_compatibili: ["Vegana", "Vegetariana", "Zona"],
     allergeni: ["Frutta secca"],
     macro: "Lipidi",
-    colore: "giallo",
+    colore: "grigio",
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ const mockAlimenti = [
     diete_compatibili: ["Vegana", "Zona"],
     allergeni: ["Soia"],
     macro: "Proteine",
-    colore: "giallo",
+    colore: "grigio",
   },
   {
     id: 7,
@@ -58,7 +58,7 @@ const mockAlimenti = [
     diete_compatibili: ["Mediterranea", "Zona", "Chetogenica"],
     allergeni: [],
     macro: "Carboidrati",
-    colore: "verde",
+    colore: "grigio",
   },
   {
     id: 8,
@@ -66,7 +66,7 @@ const mockAlimenti = [
     diete_compatibili: ["Zona", "Mediterranea", "Vegetariana"],
     allergeni: ["Uova"],
     macro: "Proteine",
-    colore: "rosso",
+    colore: "grigio",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function Calcolatore() {
 
   return (
     <PageContainer
-      titolo="Calcolatore NutriCoSa"
+      titolo="CSU Nutrition Spiral"
       sottotitolo="Filtra alimenti per dieta, intolleranze, allergeni e macro"
     >
       <div style={{ padding: "1.5rem" }}>

@@ -22,17 +22,18 @@ export default function Obiettivo() {
         }}
       >
         <p>
-          In <strong>NutriCoSa</strong> – <em>Nutrizione Consapevole Salutare</em>,
-          l’obiettivo non è la perfezione, ma la crescita personale continua.
-          Ogni scelta, ogni passo e ogni piccolo miglioramento contribuiscono
-          al tuo equilibrio fisico e mentale.
+          In <strong>Nutrition Spiral</strong>, l’obiettivo non è inseguire la
+          perfezione, ma costruire nel tempo un equilibrio reale e personale.
+          Ogni scelta quotidiana, anche la più piccola, contribuisce a definire
+          il tuo percorso di benessere.
         </p>
 
         <p style={{ marginTop: "1rem" }}>
-          Il nostro percorso unisce conoscenza scientifica, ascolto di sé e
-          rispetto per il proprio corpo.  
-          Non esistono risultati immediati: esistono abitudini che, nel tempo,
-          trasformano la tua vita.
+        Questo progetto nasce per accompagnarti nella comprensione del tuo
+        corpo e delle tue abitudini, unendo conoscenza scientifica, ascolto di
+        sé e rispetto dei propri tempi.
+        <br />
+        Non esistono scorciatoie: esistono direzioni consapevoli.
         </p>
 
         <h3
@@ -42,20 +43,20 @@ export default function Obiettivo() {
             marginTop: "2rem",
             color: theme.colori.secondario,
           }}
-        >
-          “Ogni passo che fai oggi è un investimento nel tuo domani.”
-        </h3>
+       >
+        “L’equilibrio non si raggiunge, si coltiva.”
+       </h3>
 
         <p
-          style={{
-            fontStyle: "italic",
-            marginTop: "1.2rem",
-            fontSize: "1rem",
-            color: "#444",
-          }}
-        >
-          Cammina con costanza, nutri la mente e il corpo, e ritroverai la tua
-          armonia.
+        style={{
+          fontStyle: "italic",
+          marginTop: "1.2rem",
+          fontSize: "1rem",
+          color: "#444",
+        }}
+       >
+         Procedi con calma, osserva, adatta e cresci: ogni passo fatto con
+         consapevolezza ha valore.
         </p>
       </div>
     </PageContainer>

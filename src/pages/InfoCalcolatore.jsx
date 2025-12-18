@@ -36,7 +36,7 @@ export default function InfoCalcolatore() {
               textShadow: "0 1px 2px rgba(0,0,0,0.1)",
             }}
           >
-            ℹ️ Informazioni sul calcolatore
+            ℹ️ Informazioni sul CSU
           </h1>
 
           <p
@@ -50,8 +50,8 @@ export default function InfoCalcolatore() {
             }}
           >
             Questa sezione spiega le logiche, i parametri e le formule che
-            alimentano il calcolatore di <strong>NutriCoSa</strong> –{" "}
-            <em>Nutrizione Consapevole Salutare</em>.  
+            alimentano il calcolatore di <strong>Nutrition Spiral</strong> –{" "}
+            <em>La Spirale della Nutrizione</em>.  
             Scoprirai come vengono calcolati i fabbisogni energetici, la
             distribuzione dei macronutrienti e l’impatto che ogni alimento
             esercita sull’equilibrio del tuo organismo.
@@ -65,7 +65,7 @@ export default function InfoCalcolatore() {
               color: "#2c2c2c",
             }}
           >
-            L’obiettivo di <strong>NutriCoSa</strong> è fornirti strumenti chiari,
+            L’obiettivo di <strong>Nutrition Spiral</strong> è fornirti strumenti chiari,
             trasparenti e scientificamente fondati per interpretare i numeri del
             tuo corpo e tradurli in azioni quotidiane più consapevoli.
           </p>

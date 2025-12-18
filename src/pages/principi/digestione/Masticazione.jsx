@@ -1,14 +1,60 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/PageContainer";
-import BottoneIndietro from "../../../components/BottoneIndietro";
 
 export default function Masticazione() {
+  const navigate = useNavigate();
+/*
+const tornaIndietro = () => {
+  navigate("/principi", {
+    state: { returnTo: "Masticazione" },
+  });
+};
+*/
+  const tornaIndietro = () => {
+    navigate("/principi/digestione", { 
+      state: { returnTo: "Masticazione" }, 
+   });
+  };
+
   return (
-    <PageContainer titolo="Masticazione" sottotitolo="La prima fase della digestione">
-      <BottoneIndietro />
+    <PageContainer
+      titolo="Masticazione"
+      sottotitolo="La prima fase del processo digestivo"
+    >
+      <button
+        onClick={tornaIndietro}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "none",
+          border: "none",
+          color: "#000000ff",
+          cursor: "pointer",
+          fontSize: "0.95rem",
+          fontWeight: "500",
+          marginBottom: "1rem",
+          padding: "4px 0",
+        }}
+      >
+        ← Torna indietro
+      </button>
 
       <div style={stileBox}>
-        <p>Contenuti in sviluppo per la sezione Masticazione.</p>
+        <p>
+          La masticazione rappresenta il primo passo della digestione ed è la fase
+          in cui il cibo viene frammentato meccanicamente dai denti e mescolato
+          alla saliva. Questo processo riduce le dimensioni dei bocconi e aumenta
+          la superficie di contatto, facilitando l’azione degli enzimi digestivi.
+        </p>
+
+        <p>
+          Durante la masticazione, la saliva svolge un ruolo fondamentale iniziando
+          la scomposizione dei carboidrati grazie all’amilasi salivare. Una buona
+          masticazione migliora l’assorbimento dei nutrienti, riduce il carico
+          digestivo e favorisce un senso di sazietà più stabile e profondo.
+        </p>
       </div>
     </PageContainer>
   );

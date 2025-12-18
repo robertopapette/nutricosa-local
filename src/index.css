@@ -1,5 +1,40 @@
 /* 🌿 Nutrity – Stile base globale */
 
+/* ===========================================================
+   🎨 PALETTE UFFICIALE NUTRITION SPIRAL — Design Tokens
+   =========================================================== */
+
+:root {
+  /* 🔱 ORO (colore principale) */
+  --oro: #facc15;         /* oro standard */
+  --oro-light: #ffe680;   /* oro chiaro */
+  --oro-deep: #d4a10f;    /* oro scuro e profondo */
+
+  /* ⚫ NERO / BASE */
+  --nero: #000000;
+  --nero-soft: #111111;    /* nero meno intenso */
+  --nero-glow: #1a1a1a;    /* per superfici */
+
+  /* 🔥 ROSSO SPIRALE (basso del menu) */
+  --rosso-spirale: #300000;
+  --rosso-medium: #600000;
+  --rosso-light: #8b0000;
+
+  /* 🌿 VERDE SPIRALE (radice della spiralità) */
+  --verde-spirale: #064e3b;
+  --verde-medium: #0b7558;
+  --verde-light: #10a67a;
+
+  /* 🔵 BLU SPIRALE (connessione cielo / acqua) */
+  --blu-spirale: #1e3a8a;
+  --blu-light: #3b82f6;
+
+  /* ✨ ACCENTI */
+  --highlight: #facc15;       /* oro — accent color */
+  --highlight-glow: rgba(250, 204, 21, 0.5);
+}
+
+
 /* RESET MODERNO */
 * {
   margin: 0;
@@ -113,8 +148,8 @@ h3 { font-size: 1.3rem; }
 .btn-blue:hover { background-color: #1d4ed8; }
 .btn-green { background-color: #2f6636; color: white; }
 .btn-green:hover { background-color: #3cb043; }
-.btn-gold { background-color: #e5c100; color: #333; }
-.btn-gold:hover { background-color: #f1d52e; }
+.btn-gold { background-color: #f2f2ef; color: #333; }
+.btn-gold:hover { background-color: #f0f05a; }
 
 /* ANIMAZIONI BASE */
 .fade-in {
@@ -130,4 +165,186 @@ h3 { font-size: 1.3rem; }
   h1 { font-size: 1.8rem; }
   h2 { font-size: 1.3rem; }
   .card { padding: 1rem; }
+}
+
+/* Titoli grandi responsivi */
+.responsive-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.1;
+  word-break: break-word;
+  text-align: center;
+}
+
+/* Pulsanti responsive dell'header */
+.header-btn {
+  font-size: clamp(0.6rem, 1.8vw, 0.85rem);
+  padding: clamp(2px, 0.8vw, 8px) clamp(6px, 1.2vw, 12px);
+  gap: clamp(2px, 1vw, 8px);
+}
+
+/* --------------------------------------------------------
+   RESPONSIVE HEADER BUTTONS & TITLE — Nutrition Spiral
+   -------------------------------------------------------- */
+
+/* Adattamento generale (desktop → mobile progressivo) */
+.header-btn {
+  font-size: clamp(0.6rem, 1.8vw, 0.85rem);
+  padding: clamp(2px, 0.8vw, 8px) clamp(6px, 1.2vw, 12px);
+  gap: clamp(2px, 1vw, 8px);
+}
+
+/* Riduzione margini del titolo solo per viewport stretti */
+.header-title {
+  margin: 0 1rem;
+}
+
+/* Contenitore dei pulsanti di destra */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* -------------------------
+   MOBILE < 480px
+   ------------------------- */
+@media (max-width: 480px) {
+
+  /* Pulsanti più compatti */
+  .header-btn {
+    padding: 2px 4px !important;
+    min-width: 50px !important;
+    font-size: 0.7rem !important;
+    gap: 4px !important;
+  }
+
+  /* Titolo più vicino ai bordi (evita overflow) */
+  .header-title {
+    margin: 0 0.3rem !important;
+  }
+
+  /* Meno spazio tra i pulsanti */
+  .header-right {
+    gap: 0.25rem !important;
+  }
+}
+
+/* ------------------------------------
+   MENU LATERALE RESPONSIVE
+   ------------------------------------ */
+
+/* Classe per ogni voce del menù */
+.menu-voce {
+  padding: 10px 16px;
+  gap: 12px;
+}
+
+/* Testo della voce */
+.menu-label {
+  font-size: clamp(0.75rem, 2.3vw, 1rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------
+   Mobile < 480px
+   ------------------------------------ */
+@media (max-width: 480px) {
+
+  /* Voce del menù più compatta */
+  .menu-voce {
+    padding: 8px 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Label più piccola e armoniosa */
+  .menu-label {
+    font-size: 0.8rem !important;
+  }
+
+  /* Icone leggermente ridotte */
+  .menu-voce svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* 🌿 MENU LATERALE RESPONSIVE — Nutrition Spiral */
+
+/* Desktop: resta tutto uguale */
+.menu-responsive {
+  width: 260px; /* usa la misura attuale del tuo theme */
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .menu-responsive {
+    width: 220px; /* leggermente più stretto */
+  }
+}
+
+/* Smartphone grande */
+@media (max-width: 768px) {
+  .menu-responsive {
+    width: 200px;
+  }
+}
+
+/* Smartphone piccolo */
+@media (max-width: 480px) {
+  .menu-responsive {
+    width: 170px;
+  }
+}
+
+/* Smartphone molto piccoli (iPhone SE / schermi da 320px) */
+@media (max-width: 360px) {
+  .menu-responsive {
+    width: 180px;
+  }
+}
+
+/* ---------------------------------------------------------
+   MENU LATERALE — STILE RESPONSIVO + TEMA MOBILE
+   --------------------------------------------------------- */
+
+/* Sfondo tutto nero con sfumatura rosso scuro verso il basso */
+.menu-responsive {
+  background: linear-gradient(180deg, var(--nero) 0%, var(--rosso-spirale) 100%);
+
+}
+
+/* --- MOBILE (<480px) --- */
+@media (max-width: 480px) {
+
+  /* Testo delle voci: oro sempre acceso */
+  .menu-label {
+    color: #fbfaf7 !important;
+    text-shadow: 0 0 4px rgba(250, 204, 21, 0.5);
+  }
+
+  /* Icone in oro */
+  .menu-voce svg {
+    stroke: #f6f4f0 !important;
+  }
+}
+
+/* Hover desktop personalizzato */
+.menu-voce:hover .menu-label {
+  color: var(--oro-light) !important;
+}
+
+.menu-voce:hover svg {
+  stroke: var(--oro-light) !important;
+}
+
+/* Sfumatura hover più elegante */
+.menu-voce:hover {
+  background: rgba(250, 204, 21, 0.12) !important;
+}
+
+@keyframes fadeInFast {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

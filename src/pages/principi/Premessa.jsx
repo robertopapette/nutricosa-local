@@ -4,12 +4,16 @@ import BottoneIndietro from "../../components/BottoneIndietro";
 
 export default function Premessa() {
   return (
-    <PageContainer titolo="Premessa" sottotitolo="Introduzione ai principi della nutrizione consapevole">
+    <PageContainer
+      titolo="Premessa"
+      sottotitolo="Introduzione ai principi della nutrizione consapevole"
+    >
       {/* 🔙 Bottone indietro */}
       <BottoneIndietro
         path="/principi-nutrizione"
         testo="Torna indietro"
       />
+
       <div
         style={{
           maxWidth: "900px",
@@ -23,17 +27,33 @@ export default function Premessa() {
         }}
       >
         <p>
-          Questa sezione introduce i concetti fondamentali che guideranno tutto
-          il percorso della nutrizione consapevole. Lo scopo è fornire una base
-          di conoscenza semplice ma scientificamente corretta, per comprendere
-          come ogni alimento influenzi il corpo e la mente.
+          La <strong>nutrizione consapevole</strong> non è una dieta e non è un insieme
+          di regole rigide: è un modo di osservare ciò che mangiamo e comprendere
+          come ogni alimento influenzi il nostro corpo, la nostra energia e il nostro
+          equilibrio quotidiano. Sapere cosa succede davvero quando introduciamo
+          cibo significa recuperare controllo, lucidità e responsabilità verso noi stessi.
         </p>
 
         <p style={{ marginTop: "1rem" }}>
-          La nutrizione non è solo una questione di calorie, ma di equilibrio
-          biochimico, qualità dei nutrienti e ascolto dei propri bisogni. In
-          queste pagine scoprirai come rendere ogni scelta alimentare parte di
-          un percorso di salute duraturo.
+          L’obiettivo di questa sezione è offrirti una base chiara e scientifica
+          affinché tu possa interpretare correttamente gli effetti dei nutrienti,
+          riconoscere i segnali del tuo organismo e compiere scelte alimentari più
+          intelligenti e coerenti con il tuo benessere. La nutrizione non riguarda
+          solo calorie e macronutrienti: riguarda <em>qualità</em>, <em>funzione</em>,
+          <em>tempistiche</em> e soprattutto <em>consapevolezza</em>.
+        </p>
+
+        <p style={{ marginTop: "1rem" }}>
+          Ogni pagina di questo percorso ti accompagnerà passo dopo passo alla
+          scoperta dei principi fondamentali: proteine, carboidrati, lipidi,
+          vitamine, minerali, acqua, digestione e molto altro. Imparare a conoscerli
+          significa imparare a conoscere te stesso, perché ciò che scegli di mangiare
+          diventa parte di te, della tua energia, della tua forza e della tua salute.
+        </p>
+
+        <p style={{ marginTop: "1rem" }}>
+          Inizia questo viaggio con mente aperta e spirito curioso: la consapevolezza
+          è il primo vero atto di amore verso il proprio corpo.
         </p>
       </div>
     </PageContainer>

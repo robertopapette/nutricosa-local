@@ -49,12 +49,16 @@ export default function Consigli() {
               color: "#2c2c2c",
             }}
           >
-            In <strong>NutriCoSa</strong> –{" "}
-            <em>Nutrizione Consapevole Salutare</em> – ogni consiglio è pensato
-            per accompagnarti nel tuo percorso di crescita personale.  
-            Qui troverai presto spunti pratici, riflessioni motivazionali e
-            suggerimenti semplici per migliorare le tue abitudini alimentari,
-            fisiche e mentali.
+            In <strong>Nutrition Spiral</strong>, i consigli non sono regole da seguire
+            alla lettera, ma spunti di riflessione pensati per accompagnarti nel tuo
+            percorso personale.
+          </p>
+
+          <p>
+           Questa sezione nascerà come uno spazio dedicato a suggerimenti pratici,
+           osservazioni quotidiane e piccole indicazioni utili per migliorare,
+           passo dopo passo, il rapporto con il cibo, il movimento e il proprio
+           equilibrio generale.
           </p>
 
           <p
@@ -65,8 +69,9 @@ export default function Consigli() {
               color: "#2c2c2c",
             }}
           >
-            L’obiettivo è ispirarti ogni giorno a piccoli cambiamenti sostenibili,
-            perché il vero progresso nasce dalla costanza e dall’ascolto di sé.
+            L’idea non è cambiare tutto subito, ma imparare a riconoscere ciò che
+            funziona per te, mantenere ciò che ti fa stare bene e adattare
+            gradualmente ciò che può migliorare.
           </p>
 
           <h2
@@ -77,7 +82,7 @@ export default function Consigli() {
               color: theme.colori.secondario,
             }}
           >
-            “Ogni piccolo passo è un grande passo verso il cambiamento.”
+            “Il cambiamento reale nasce da piccoli gesti ripetuti nel tempo.”
           </h2>
 
           <p
@@ -88,8 +93,8 @@ export default function Consigli() {
               color: "#444",
             }}
           >
-            La motivazione è la scintilla che accende il percorso della
-            consapevolezza e dell’equilibrio.
+            La consapevolezza cresce quando smetti di inseguire risultati immediati
+            e inizi a dare valore alla continuità.
           </p>
 
           <div
@@ -102,9 +107,9 @@ export default function Consigli() {
             }}
           >
             <p>
-              ⚠️ <strong>Nota:</strong> I contenuti presenti in questa sezione
-              hanno esclusivamente scopo informativo e non sostituiscono il
-              parere di un medico o di un nutrizionista qualificato.
+              ⚠️ <strong>Nota:</strong> I contenuti presenti in questa sezione hanno
+              esclusivamente scopo informativo e non sostituiscono il parere di
+              professionisti della salute qualificati.
             </p>
           </div>
         </div>

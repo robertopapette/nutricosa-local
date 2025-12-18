@@ -1,200 +1,111 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import PageContainer from "../components/PageContainer";
-import { theme } from "../theme";
+
 
 export default function PrincipiNutrizione() {
   const navigate = useNavigate();
-  const [mostraDigestione, setMostraDigestione] = useState(false);
+  const location = useLocation();
+  const bottoniRef = useRef({});
 
   const sezioni = [
-    { nome: "Premessa", path: "/principi/premessa" },
     { nome: "Proteine", path: "/principi/proteine" },
     { nome: "Glucidi", path: "/principi/glucidi" },
     { nome: "Lipidi", path: "/principi/lipidi" },
     { nome: "Vitamine", path: "/principi/vitamine" },
     { nome: "Minerali", path: "/principi/minerali" },
     { nome: "Acqua", path: "/principi/acqua" },
-    { nome: "Digestione", path: "digestione" }, // gestita a parte
+    { nome: "Digestione", path: "/principi/digestione" },
     { nome: "Alcool (calorie fantasma)", path: "/principi/alcool" },
     { nome: "Dolci", path: "/principi/dolci" },
   ];
 
-  const sottoDigestione = [
-    "Masticazione",
-    "Saliva",
-    "Deglutizione",
-    "Succo gastrico",
-    "Movimenti stomaco",
-    "Controllo motilita",
-    "Succo pancreatico",
-    "Bile",
-    "Succo intestinale",
-    "Movimenti intestino tenue",
-    "Batteri intestinali",
-    "Secrezione colon",
-    "Movimenti colon",
-    "Defecazione",
-    "Feci",
-  ];
+  /* 🔁 ascolta le figlie */
+  useEffect(() => {
+    const target = location.state?.returnTo;
 
-  const handleClick = (s) => {
-    if (s.path === "digestione") {
-      setMostraDigestione(!mostraDigestione);
-    } else {
-      navigate(s.path);
+    if (target && bottoniRef.current[target]) {
+      bottoniRef.current[target].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }
-  };
+  }, [location.state]);
 
   return (
     <PageContainer
-      titolo="🥦 I principi della nutrizione consapevole"
-      sottotitolo="Le basi scientifiche e pratiche di NutriCoSa – Nutrizione Consapevole Salutare"
+      titolo="I principi della nutrizione consapevole"
+      sottotitolo="Le basi per comprendere come il cibo dialoga con il corpo"
     >
-      <div
-        style={{
-          maxWidth: "950px",
-          margin: "2rem auto",
-          padding: "1.5rem",
-          background: "rgba(255,255,255,0.9)",
-          borderRadius: "12px",
-          boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
-          color: "#222",
-          lineHeight: 1.7,
-        }}
-      >
-        <h2
+      <div style={{ padding: "1rem" }}>
+        <div
           style={{
-            fontWeight: 700,
-            marginBottom: "1rem",
-            color: theme.colori.accento,
+            maxWidth: "900px",
+            margin: "0 auto 2rem auto",
+            padding: "1.5rem",
+            background: "rgba(255,255,255,0.9)",
+            borderRadius: "12px",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+            color: "#222",
+            lineHeight: 1.7,
           }}
         >
-          La filosofia NutriCoSa
-        </h2>
+          
+          <p>
+            La nutrizione non è semplicemente l’atto di mangiare, ma un processo
+            complesso attraverso il quale l’organismo interagisce con ciò che
+            introduciamo, trasformandolo in energia, struttura ed equilibrio.
+          </p>
 
-        <p style={{ marginBottom: "1rem" }}>
-          <strong>NutriCoSa</strong> – <em>Nutrizione Consapevole Salutare</em> – nasce
-          con l’obiettivo di diffondere conoscenza e consapevolezza attraverso
-          un approccio chiaro, scientifico e accessibile a tutti.
-        </p>
+          <p style={{ marginTop: "1rem" }}>
+            Ogni nutriente svolge una funzione precisa: alcuni forniscono energia,
+            altri costruiscono e riparano i tessuti, altri ancora regolano
+            reazioni vitali. Comprendere questi principi significa fare scelte
+            più consapevoli, ascoltando il corpo e rispettandone i bisogni reali.
+          </p>
 
-        <p style={{ marginBottom: "1.5rem" }}>
-          Comprendere il funzionamento del corpo e dei nutrienti significa
-          imparare a nutrirsi con intelligenza, rispettando i propri ritmi
-          biologici e le proprie necessità.  
-          Ogni sezione di questa area ti accompagnerà passo dopo passo alla
-          scoperta di ciò che rende l’alimentazione uno strumento di benessere
-          e di equilibrio.
-        </p>
+          <p style={{ marginTop: "1rem" }}>
+            In <strong>Nutrition Spiral</strong>, questi concetti non sono regole rigide,
+            ma strumenti di comprensione: una base solida su cui costruire
+            benessere, equilibrio e autonomia nelle scelte alimentari.
+          </p>
+        </div>
 
-        {/* === Griglia pulsanti principali === */}
+        {/* 🔘 BOTTONI */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gap: "0.8rem",
-            marginTop: "1rem",
+            gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+            gap: "0.7rem",
           }}
         >
           {sezioni.map((s) => (
             <button
               key={s.nome}
-              onClick={() => handleClick(s)}
+              ref={(el) => (bottoniRef.current[s.nome] = el)}
+              onClick={() => navigate(s.path)}
               style={{
-                background: "rgba(0,0,0,0.05)",
-                border: `1px solid ${theme.colori.accento}`,
+                background: "rgba(255,255,255,0.8)",
+                border: "1px solid #ccc",
                 borderRadius: "8px",
-                padding: "0.8rem 1rem",
-                cursor: "pointer",
-                fontWeight: 600,
-                color: "#222",
+                padding: "0.9rem",
                 textAlign: "left",
+                cursor: "pointer",
+                fontSize: "0.95rem",
                 transition: "all 0.25s ease",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(34,197,94,0.15)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "rgba(0,0,0,0.05)")
-              }
-            >
-              {s.nome}
-            </button>
-          ))}
-        </div>
-
-        {/* === Sotto-griglia Digestione === */}
-        <div
-          style={{
-            overflow: "hidden",
-            maxHeight: mostraDigestione ? "800px" : "0",
-            transition: "max-height 0.5s ease",
-            marginTop: mostraDigestione ? "1rem" : "0",
-          }}
-        >
-          {mostraDigestione && (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                gap: "0.6rem",
-                marginTop: "0.5rem",
-                paddingLeft: "1rem",
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(34,197,94,0.15)";
+                e.currentTarget.style.borderColor = "#16a34a";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.8)";
+                e.currentTarget.style.borderColor = "#ccc";
               }}
             >
-              {sottoDigestione.map((sotto) => (
-                <button
-                  key={sotto}
-                  onClick={() =>
-                    navigate(
-                      `/principi/digestione/${sotto
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`
-                    )
-                  }
-                  style={{
-                    background: "rgba(255,255,255,0.6)",
-                    border: "1px solid rgba(0,0,0,0.2)",
-                    borderRadius: "6px",
-                    padding: "0.6rem",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    fontSize: "0.9rem",
-                    transition: "all 0.25s ease",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.background =
-                      "rgba(201,180,0,0.15)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.background =
-                      "rgba(255,255,255,0.6)")
-                  }
-                >
-                  {sotto}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* === Frase finale + disclaimer === */}
-        <div style={{ marginTop: "2rem", textAlign: "center" }}>
-          <p style={{ fontWeight: 600, fontStyle: "italic" }}>
-            “La conoscenza è il primo ingrediente della salute.”
-          </p>
-          <p
-            style={{
-              marginTop: "0.6rem",
-              fontSize: "0.9rem",
-              fontStyle: "italic",
-              color: "#333",
-            }}
-          >
-            ⚠️ Le informazioni presenti sono a scopo divulgativo e non sostituiscono
-            il parere di un medico o di un nutrizionista qualificato.
-          </p>
+             {s.nome}
+           </button>
+         ))}
         </div>
       </div>
     </PageContainer>

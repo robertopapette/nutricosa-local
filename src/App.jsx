@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import ChiSiamo from "./pages/ChiSiamo";
 import ChiSeiTu from "./pages/ChiSeiTu";
 import ProfiloMorfologico from "./pages/ProfiloMorfologico";
-import Calcolatore from "./pages/Calcolatore";
+import Calcolatore from "./pages/CSUDemo";
 import DieteFamose from "./pages/DieteFamose";
 import Ricettario from "./pages/Ricettario";
 import PrincipiNutrizione from "./pages/PrincipiNutrizione";
@@ -23,17 +23,20 @@ import Notifiche from "./pages/Notifiche";
 import FontiUfficiali from "./pages/FontiUfficiali";
 import Impostazioni from "./pages/Impostazioni";
 import MappaSito from "./pages/MappaSito";
-import DietaMediterranea from "./pages/diete/DietaMediterranea";
-import DietaZona from "./pages/diete/DietaZona";
-import DietaChetogenica from "./pages/diete/DietaChetogenica";
-import DietaPaleo from "./pages/diete/DietaPaleo";
-import DietaVegetariana from "./pages/diete/DietaVegetariana";
-import DietaVegana from "./pages/diete/DietaVegana";
-import DietaDigiunoIntermittente from "./pages/diete/DietaDigiunoIntermittente";
-import DietaGruppoSanguineo from "./pages/diete/DietaGruppoSanguineo";
-import DietaDASH from "./pages/diete/DietaDASH";
-import DietaMIND from "./pages/diete/DietaMIND";
-import DietaAtkins from "./pages/diete/DietaAtkins";
+import Mediterranea from "././pages/diete/Mediterranea";
+import Zona from "./pages/diete/Zona";
+import Chetogenica from "./pages/diete/Chetogenica";
+import Paleo from "./pages/diete/Paleo";
+import Vegetariana from "./pages/diete/Vegetariana";
+import Vegana from "./pages/diete/Vegana";
+import DigiunoIntermittente from "./pages/diete/DigiunoIntermittente";
+import GruppoSanguigno from "./pages/diete/GruppoSanguigno";
+import DASH from "./pages/diete/DASH";
+import MIND from "./pages/diete/MIND";
+import Atkins from "./pages/diete/Atkins";
+import Dukan from "./pages/diete/Dukan";
+import LowFODMAP from "./pages/diete/LowFODMAP";
+import Flexitariana from "./pages/diete/Flexitariana";
 import InfoCalcolatore from "./pages/InfoCalcolatore";
 import Consigli from "./pages/Consigli";
 import AggiornaDati from "./pages/AggiornaDati";
@@ -99,6 +102,7 @@ export default function App() {
 
           {/* === Principi della Nutrizione Consapevole === */}
           <Route path="/principi-nutrizione" element={<PrincipiNutrizione />} />
+          <Route path="/principi" element={<PrincipiNutrizione />} />
           <Route path="/principi/premessa" element={<Premessa />} />
           <Route path="/principi/proteine" element={<Proteine />} />
           <Route path="/principi/glucidi" element={<Glucidi />} />
@@ -108,6 +112,7 @@ export default function App() {
           <Route path="/principi/acqua" element={<Acqua />} />
           <Route path="/principi/alcool" element={<Alcool />} />
           <Route path="/principi/dolci" element={<Dolci />} />
+          <Route path="/principi/digestione" element={<Digestione />} />
 
           {/* === Digestione (sottosezioni) === */}
           <Route path="/principi/digestione" element={<Digestione />} />
@@ -126,28 +131,24 @@ export default function App() {
           <Route path="/principi/digestione/movimenti-colon" element={<MovimentiColon />} />
           <Route path="/principi/digestione/defecazione" element={<Defecazione />} />
           <Route path="/principi/digestione/feci" element={<Feci />} />
+          
+          {/* Diete famose */}
+          <Route path="/dieta/mediterranea" element={<Mediterranea />} />
+          <Route path="/dieta/zona" element={<Zona />} />
+          <Route path="/dieta/chetogenica" element={<Chetogenica />} />
+          <Route path="/dieta/paleo" element={<Paleo />} />
+          <Route path="/dieta/vegetariana" element={<Vegetariana />} />
+          <Route path="/dieta/vegana" element={<Vegana />} />
+          <Route path="/dieta/digiuno-intermittente" element={<DigiunoIntermittente />} />
+          <Route path="/dieta/gruppo-sanguigno" element={<GruppoSanguigno />} />
+          <Route path="/dieta/dash" element={<DASH />} />
+          <Route path="/dieta/mind" element={<MIND />} />
+          <Route path="/dieta/atkins" element={<Atkins />} />
+          <Route path="/dieta/dukan" element={<Dukan />} />
+          <Route path="/dieta/flexitariana" element={<Flexitariana />} />
+          <Route path="/dieta/low-fodmap" element={<LowFODMAP />} />
 
-          {/* Altre pagine */}
-          <Route path="/attivita-fisica" element={<AttivitaFisica />} />
-          <Route path="/corpo-umano" element={<CorpoUmano />} />
-          <Route path="/obiettivo" element={<Obiettivo />} />
-          <Route path="/donazione" element={<Donazione />} />
-          <Route path="/aiuto" element={<Aiuto />} />
-          {/* 🆕 Aggiunta nuova rotta */}
-          <Route path="/aggiorna-dati" element={<AggiornaDati />} />
-          <Route path="/dieta/mediterranea" element={<DietaMediterranea />} />
-          <Route path="/dieta/zona" element={<DietaZona />} />
-          <Route path="/dieta/chetogenica" element={<DietaChetogenica />} />
-          <Route path="/dieta/paleo" element={<DietaPaleo />} />
-          <Route path="/dieta/vegetariana" element={<DietaVegetariana />} />
-          <Route path="/dieta/vegana" element={<DietaVegana />} />
-          <Route path="/dieta/digiuno-intermittente" element={<DietaDigiunoIntermittente />} />
-          <Route path="/dieta/gruppo-sanguineo" element={<DietaGruppoSanguineo />} />
-          <Route path="/dieta/dash" element={<DietaDASH />} />
-          <Route path="/dieta/mind" element={<DietaMIND />} />
-          <Route path="/dieta/atkins" element={<DietaAtkins />} />
-          <Route path="/info-calcolatore" element={<InfoCalcolatore />} />
-          <Route path="/consigli" element={<Consigli />} />
+          {/* Supplementi */}
           <Route path="/supplementi" element={<Supplementi />} />
           <Route path="/supplementi/proteici" element={<Proteici />} />
           <Route path="/supplementi/energetici" element={<Energetici />} />
@@ -155,11 +156,20 @@ export default function App() {
           <Route path="/supplementi/massa" element={<Massa />} />
           <Route path="/supplementi/naturali-legali" element={<NaturaliLegali />} />
           <Route path="/supplementi/ormonali-dopanti" element={<OrmonaliDopanti />} />
+
+          {/* Altre pagine */}
+          <Route path="/attivita-fisica" element={<AttivitaFisica />} />
+          <Route path="/corpo-umano" element={<CorpoUmano />} />
+          <Route path="/obiettivo" element={<Obiettivo />} />
+          <Route path="/donazione" element={<Donazione />} />
+          <Route path="/aiuto" element={<Aiuto />} />
+          <Route path="/aggiorna-dati" element={<AggiornaDati />} />
+          <Route path="/aggiorna-i-tuoi-dati" element={<AggiornaDati />} />
+          <Route path="/inserisci-i-tuoi-dati" element={<InserisciDati />} />
+          <Route path="/info-calcolatore" element={<InfoCalcolatore />} />
+          <Route path="/consigli" element={<Consigli />} />
           <Route path="/aggiorna-dati/inserisci" element={<InserisciDati />} />
-
-          {/* 🆕 Legenda icone */}
           <Route path="/legenda-icone" element={<LegendaIcone />} />
-
           <Route path="/abbonamenti" element={<Abbonamenti />} />
           <Route path="/notifiche" element={<Notifiche />} />
           <Route path="/fonti-ufficiali" element={<FontiUfficiali />} />

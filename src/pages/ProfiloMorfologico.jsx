@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { calcolaProfiloMorfologico } from "../utils/CalcoliMorfologici";
 import { Save } from "lucide-react";
 import BottoneIndietro from "../components/BottoneIndietro";
+import DropdownSesso from "../components/DropdownSesso";
+
+
+
+
 
 export default function ProfiloMorfologico() {
   const navigate = useNavigate();
@@ -26,18 +31,27 @@ export default function ProfiloMorfologico() {
 
   const [risultati, setRisultati] = useState(null);
 
-  useEffect(() => {
-    if (!form.dataNascita) return;
+ useEffect(() => {
+   if (!form.dataNascita) return;
 
-    const nascita = new Date(form.dataNascita);
-    const oggi = new Date();
-    let anni = oggi.getFullYear() - nascita.getFullYear();
+   // form.dataNascita è nel formato "GG/MM/AAAA"
+   const [gg, mm, yyyy] = form.dataNascita.split("/").map(Number);
 
-    const m = oggi.getMonth() - nascita.getMonth();
-    if (m < 0 || (m === 0 && oggi.getDate() < nascita.getDate())) anni--;
+   // se qualcosa non è numero valido, esco
+   if (!gg || !mm || !yyyy) return;
 
-    setForm((prev) => ({ ...prev, eta: anni }));
-  }, [form.dataNascita]);
+   const nascita = new Date(yyyy, mm - 1, gg);
+   if (isNaN(nascita.getTime())) return;
+
+   const oggi = new Date();
+   let anni = oggi.getFullYear() - nascita.getFullYear();
+
+   const m = oggi.getMonth() - nascita.getMonth();
+   if (m < 0 || (m === 0 && oggi.getDate() < nascita.getDate())) anni--;
+
+   setForm((prev) => ({ ...prev, eta: anni }));
+ }, [form.dataNascita]);
+
 
   useEffect(() => {
     const attivo = JSON.parse(localStorage.getItem("profiloAttivo"));
@@ -79,9 +93,12 @@ export default function ProfiloMorfologico() {
       sottotitolo="Valutazione struttura ossea e conformazione naturale"
     >
       {/* ✅ BOTTONE TORNA – ADESSO IN ALTO COME IN InserisciDati */}
-      <div style={{ marginBottom: "1rem" }}>
-        <BottoneIndietro path="/chi-sei-tu" testo="Torna" />
-      </div>
+
+        <BottoneIndietro
+          path="/chi-sei-tu"
+          state={{ returnTo: "Profilo" }}
+          testo="Torna a Chi sei tu"
+        />
 
       <div
         style={{
@@ -106,11 +123,17 @@ export default function ProfiloMorfologico() {
             borderRadius: "8px",
           }}
         >
-          La tua <strong>struttura ossea</strong> è il telaio naturale del tuo corpo:
-          stabile, unica e immutabile. Capirla significa conoscere la tua base,
-          rispettare le tue proporzioni e riconoscere la tua predisposizione
-          naturale alla forma a <strong>V-shape</strong>. Qui non si giudica niente:
-          si comprende e si costruisce consapevolezza.
+          Ogni corpo ha una propria struttura, una base unica su cui tutto il resto
+          prende forma. La <strong>struttura ossea</strong> rappresenta il tuo telaio
+          naturale: non cambia, non si giudica, ma si comprende.
+          <br /><br />
+          Conoscere queste proporzioni significa imparare a lavorare <em>con</em> il
+          tuo corpo e non contro di esso, rispettando le tue caratteristiche e la tua
+          predisposizione naturale allo sviluppo fisico.
+          <br /><br />
+          Qui non ci sono etichette né confronti: c’è solo un punto di partenza
+          consapevole, utile per costruire obiettivi realistici, sostenibili e davvero
+          adatti a te.
         </p>
 
         <div
@@ -125,7 +148,7 @@ export default function ProfiloMorfologico() {
           {/* CAMPI VISIBILI */}
           {[
             ["Sesso", "sesso", "select"],
-            ["Data di nascita", "dataNascita", "date"],
+            ["Data di nascita", "dataNascita", "text"],
             ["Età", "eta", "number", true],
             ["Altezza (cm)", "altezza", "number"],
             ["Altezza da seduto (cm)", "altezzaSeduti", "number"],
@@ -153,21 +176,34 @@ export default function ProfiloMorfologico() {
               </label>
 
               {tipo === "select" ? (
-                <select
-                  name={campo}
-                  value={form[campo]}
+                <DropdownSesso
+                  value={form.sesso}
                   onChange={handleChange}
+                /> 
+              ) : tipo === "text" && campo === "dataNascita" ? (
+                <input
+                  type="text"
+                  name="dataNascita"
+                  placeholder="GG/MM/AAAA"
+                  value={form.dataNascita}
+                  onChange={(e) => {
+                    // accetta solo numeri
+                    let v = e.target.value.replace(/[^\d]/g, "");
+
+                    // auto-inserimento slash
+                    if (v.length >= 3) v = v.slice(0, 2) + "/" + v.slice(2);
+                    if (v.length >= 6) v = v.slice(0, 5) + "/" + v.slice(5, 9);
+
+                    setForm({ ...form, dataNascita: v });
+                  }}
                   style={{
                     padding: "0.3rem",
                     borderRadius: "4px",
                     border: "1px solid #333",
-                    fontSize: "0.92rem",
                     background: "#fff",
                   }}
-                >
-                  <option value="M">Maschio</option>
-                  <option value="F">Femmina</option>
-                </select>
+                />      
+                
               ) : (
                 <input
                   type={tipo}

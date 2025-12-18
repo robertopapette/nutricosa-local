@@ -29,6 +29,7 @@ export default function Home() {
           }}
         >
           <h1
+            className="responsive-title"
             style={{
               fontSize: "2rem",
               fontWeight: "bold",
@@ -37,9 +38,10 @@ export default function Home() {
               textShadow: "0 1px 2px rgba(0,0,0,0.1)",
             }}
           >
-            NutriCoSa
+            Nutrition Spiral
           </h1>
           <h2
+            className="responsive-subtitle"
             style={{
               fontSize: "1.1rem",
               color: theme.colori.secondario,
@@ -47,7 +49,7 @@ export default function Home() {
               letterSpacing: "0.5px",
             }}
           >
-            Nutrizione Consapevole Salutare
+            La Spirale della nutrizione
           </h2>
 
           <p
@@ -60,11 +62,21 @@ export default function Home() {
               color: "#2c2c2c",
             }}
           >
-            Benvenuto in <strong>NutriCoSa</strong>, il progetto che unisce scienza,
-            esperienza e consapevolezza per aiutarti a vivere in modo più sano,
-            equilibrato e felice.  
-            Qui impari ad ascoltare il tuo corpo, a comprendere il valore
-            del cibo e a migliorare ogni giorno attraverso scelte consapevoli.
+            Benvenuto in <strong>Nutrition Spiral</strong>, un progetto dedicato alla
+            comprensione profonda della nutrizione come percorso di equilibrio,
+            consapevolezza e adattamento personale.
+          </p>
+
+          <p>
+            Qui il cibo non è visto come una regola rigida o una soluzione rapida,
+            ma come parte di un sistema più ampio che coinvolge corpo, mente,
+            movimento e stile di vita.
+          </p>
+
+          <p>
+            Nutrition Spiral nasce per aiutarti a osservare, comprendere e migliorare
+            le tue scelte quotidiane, valorizzando la conoscenza scientifica senza
+            perdere il contatto con l’esperienza reale e individuale.
           </p>
 
           <h3
@@ -75,7 +87,7 @@ export default function Home() {
               color: theme.colori.secondario,
             }}
           >
-            “Trasforma ciò che mangi in energia, equilibrio e consapevolezza.”
+            “La nutrizione è un percorso, non una scorciatoia.”
           </h3>
 
           <p
@@ -86,7 +98,8 @@ export default function Home() {
               color: "#444",
             }}
           >
-            La vera nutrizione non inizia nel piatto, ma nella mente.
+            La vera consapevolezza nasce quando impari ad ascoltare il tuo corpo,
+            leggere i segnali e intervenire con equilibrio, nel tempo.
           </p>
 
           <div
@@ -100,8 +113,8 @@ export default function Home() {
           >
             <p>
               ⚠️ <strong>Disclaimer medico:</strong> Le informazioni presenti in questo
-              sito hanno esclusivamente scopo divulgativo e non sostituiscono
-              il consulto di medici, dietologi o altri professionisti della salute.
+              sito hanno esclusivamente scopo divulgativo e non sostituiscono il
+              consulto di medici, nutrizionisti o altri professionisti della salute.
             </p>
           </div>
         </div>

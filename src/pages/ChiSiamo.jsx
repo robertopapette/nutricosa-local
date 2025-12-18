@@ -40,14 +40,14 @@ export default function ChiSiamo() {
           </h2>
 
           <p style={{ lineHeight: 1.7, fontSize: "1.05rem", color: "#2c2c2c" }}>
-            <strong>NutriCoSa</strong> nasce dal desiderio di creare un punto d’incontro
+            <strong>Nutrition Spiral</strong> nasce dal desiderio di creare un punto d’incontro
             tra scienza, consapevolezza e benessere. È un progetto che unisce la
             conoscenza nutrizionale a un approccio umano e pratico, per guidarti
             verso una vita più equilibrata, sana e consapevole.
           </p>
 
           <p style={{ marginTop: "1rem", lineHeight: 1.7, fontSize: "1.05rem", color: "#2c2c2c" }}>
-            <strong>NutriCoSa</strong> significa <em>Nutrizione Consapevole Salutare</em>:
+            <strong>Nutrition Spiral</strong> significa <em>Consapevole di ciò che ruota attorno alla nutrizione</em>:
             un metodo, una filosofia e una visione che mette la persona al centro,
             integrando alimentazione, attività fisica e benessere mentale.
           </p>
@@ -94,7 +94,7 @@ export default function ChiSiamo() {
               color: "#2c2c2c",
             }}
           >
-            La missione di <strong>NutriCoSa</strong> è aiutarti a capire che il vero
+            La missione di <strong>Nutrition Spiral</strong> è aiutarti a capire che il vero
             benessere non nasce da una dieta, ma da uno stile di vita consapevole
             e sostenibile nel tempo.
           </p>

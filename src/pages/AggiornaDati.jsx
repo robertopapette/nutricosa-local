@@ -1,10 +1,30 @@
 import React from "react";
 import PageContainer from "../components/PageContainer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import { theme } from "../theme";
 
 export default function AggiornaDati() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const bottoniRef = useRef({});
+
+  useEffect(() => {
+    const target = location.state?.returnTo;
+    if (!target) return;
+
+    const el = bottoniRef.current[target];
+    if (el) {
+      requestAnimationFrame(() => {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      });
+    }
+  }, [location.state]);
+
+
 
   return (
     <PageContainer
@@ -39,9 +59,9 @@ export default function AggiornaDati() {
         <p style={{ marginBottom: "1.2rem", textAlign: "justify" }}>
           In questa sezione potrai completare l’inserimento dei tuoi dati personali
           e fisici, creando così uno <strong>storico di progresso</strong> nel tempo.
-          Seguendo i programmi di allenamento e i consigli alimentari offerti da NutriCoSa,
-          potrai scoprire i tuoi veri punti di forza e trasformare il <em>te di oggi</em>
-          in un <strong>te atletico e consapevole</strong> domani.
+          Seguendo i programmi di allenamento e i consigli alimentari offerti da Nutrition Spiral,
+          potrai scoprire i tuoi veri punti di forza e trasformare il te di oggi
+          in un <strong>te atletico e consapevole</strong>  domani.
         </p>
 
         <p style={{ marginBottom: "1.5rem", textAlign: "justify" }}>
@@ -63,30 +83,28 @@ export default function AggiornaDati() {
         {/* 🔹 Pulsante “Clicca qui per iniziare” */}
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <button
-            onClick={() => navigate("/aggiorna-dati/inserisci")}
+            ref={(el) => (bottoniRef.current["InserisciDati"] = el)}
+            onClick={() => navigate("/inserisci-i-tuoi-dati")}
             style={{
-              background: "linear-gradient(90deg, #3bb143, #c8b400)",
-              color: "#000",
-              border: "2px solid #000",
-              borderRadius: "10px",
-              padding: "0.8rem 1.6rem",
-              fontSize: "1.1rem",
-              fontWeight: "700",
+              background: "rgba(255,255,255,0.8)",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+              padding: "0.9rem 1.2rem",
               cursor: "pointer",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+              fontSize: "1rem",
+              fontWeight: "500",
               transition: "all 0.25s ease",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.background =
-                "linear-gradient(90deg, #c8b400, #3bb143)")
-            }
+              (e.currentTarget.style.background = "rgba(34,197,94,0.15)")
+             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.background =
-                "linear-gradient(90deg, #3bb143, #c8b400)")
-            }
-          >
-            🚀 Clicca qui per iniziare
+              (e.currentTarget.style.background = "rgba(255,255,255,0.8)")
+             }
+           >
+            Clicca qui per iniziare
           </button>
+
         </div>
 
         {/* 🔹 Nota finale */}

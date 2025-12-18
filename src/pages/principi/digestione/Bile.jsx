@@ -1,14 +1,62 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/PageContainer";
-import BottoneIndietro from "../../../components/BottoneIndietro";
 
 export default function Bile() {
+  const navigate = useNavigate();
+
+/*
+const tornaIndietro = () => {
+  navigate("/principi", {
+    state: { returnTo: "Bile" },
+  });
+};
+*/
+  const tornaIndietro = () => {
+    navigate("/principi/digestione", { 
+      state: { returnTo: "Bile" }, 
+   });
+  };
+
   return (
-    <PageContainer titolo="Bile" sottotitolo="Il contributo alla digestione dei grassi">
-      <BottoneIndietro />
+    <PageContainer titolo="Bile" sottotitolo="L’emulsionante naturale dei grassi">
+
+
+      <button
+        onClick={tornaIndietro}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "none",
+          border: "none",
+          color: "#000000ff",
+          cursor: "pointer",
+          fontSize: "0.95rem",
+          fontWeight: "500",
+          marginBottom: "1rem",
+          padding: "4px 0",
+        }}
+      >
+        ← Torna indietro
+      </button>
 
       <div style={stileBox}>
-        <p>Contenuti in sviluppo per la sezione Bile.</p>
+        <p>
+          La bile è un fluido prodotto dal fegato e immagazzinato nella
+          cistifellea. Non contiene enzimi digestivi, ma svolge un ruolo
+          indispensabile: emulsionare i grassi alimentari, cioè suddividerli in
+          minuscole goccioline per aumentare la superficie di contatto con la
+          lipasi pancreatica.
+        </p>
+
+        <p>
+          Grazie alla bile, la digestione dei lipidi diventa molto più efficiente.
+          Inoltre, la bile favorisce l'assorbimento delle vitamine liposolubili
+          (A, D, E, K) e contribuisce all'eliminazione di sostanze di scarto, come
+          bilirubina e colesterolo. Il corretto flusso biliare è essenziale per una
+          digestione equilibrata e per il benessere epatobiliare.
+        </p>
       </div>
     </PageContainer>
   );

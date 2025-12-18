@@ -1,15 +1,58 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/PageContainer";
-import BottoneIndietro from "../../../components/BottoneIndietro";
 
 export default function Saliva() {
+  const navigate = useNavigate();
+
+/*
+const tornaIndietro = () => {
+  navigate("/principi", {
+    state: { returnTo: "Saliva" },
+  });
+};
+*/
+  const tornaIndietro = () => {
+    navigate("/principi/digestione", { 
+      state: { returnTo: "Saliva" }, 
+   });
+  };
+
   return (
-    <PageContainer titolo="Saliva" sottotitolo="L'inizio della digestione enzimatica">
-      {/* 🔙 Pulsante dinamico: torna alla pagina precedente */}
-      <BottoneIndietro />
+    <PageContainer titolo="Saliva" sottotitolo="Il fluido che dà inizio alla digestione">
+      <button
+        onClick={tornaIndietro}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "none",
+          border: "none",
+          color: "#000000ff",
+          cursor: "pointer",
+          fontSize: "0.95rem",
+          fontWeight: "500",
+          marginBottom: "1rem",
+          padding: "4px 0",
+        }}
+      >
+        ← Torna indietro
+      </button>
 
       <div style={stileBox}>
-        <p>Contenuti in sviluppo per la sezione Saliva.</p>
+        <p>
+          La saliva è un fluido prodotto dalle ghiandole salivari e svolge un ruolo
+          essenziale nella digestione. Oltre a lubrificare il cibo per facilitarne
+          la deglutizione, contiene enzimi — come l’amilasi salivare — che avviano
+          la scomposizione chimica dei carboidrati complessi.
+        </p>
+
+        <p>
+          La saliva ha anche funzioni protettive: neutralizza gli acidi, difende da
+          batteri e microrganismi, mantiene il cavo orale idratato e preserva lo
+          smalto dentale. Una secrezione salivare adeguata migliora la digeribilità
+          e contribuisce alla salute generale dell’apparato digestivo.
+        </p>
       </div>
     </PageContainer>
   );

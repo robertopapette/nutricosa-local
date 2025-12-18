@@ -3,29 +3,50 @@ import PageContainer from "../../components/PageContainer";
 import BottoneIndietro from "../../components/BottoneIndietro";
 
 export default function Glucidi() {
+
   return (
-    <PageContainer titolo="Proteine" sottotitolo="Il mattone fondamentale del corpo umano">
-      {/* 🔙 Bottone indietro */}
-      <BottoneIndietro
-        path="/principi-nutrizione"
-        testo="Torna indietro"
-      />
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "2rem auto",
-          padding: "1.5rem",
-          background: "rgba(255,255,255,0.9)",
-          borderRadius: "12px",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-          color: "#222",
-          lineHeight: 1.7,
-        }}
-      >
+    <PageContainer
+      titolo="Glucidi"
+      sottotitolo="La fonte primaria di energia per il corpo"
+    >
+
+    <BottoneIndietro
+      path="/principi"
+      state={{ returnTo: "Glucidi" }}
+      testo="Torna ai principi"
+    />
+
         <p>
-          Sezione introduttiva sulle proteine. Contenuti in sviluppo.
+          I <strong>glucidi</strong>, o carboidrati, rappresentano la fonte di energia
+          più immediata e facilmente utilizzabile dall’organismo. Ogni muscolo,
+          ogni cellula e perfino il cervello dipendono da essi per funzionare al
+          meglio. Quando introdotti con intelligenza, favoriscono vitalità,
+          prestazioni e lucidità mentale.
         </p>
-      </div>
+
+        <p style={{ marginTop: "1rem" }}>
+          Non tutti i carboidrati però sono uguali. Quelli <strong>semplici</strong>
+          (come zuccheri e dolci) vengono assorbiti rapidamente e possono generare
+          picchi glicemici, mentre i carboidrati <strong>complessi</strong> (come riso,
+          avena, patate, cereali e legumi) rilasciano energia in modo graduale e
+          più stabile. L’<em>indice glicemico</em> e il <em>carico glicemico</em>
+          determinano la velocità con cui aumentano la glicemia.
+        </p>
+
+        <p style={{ marginTop: "1rem" }}>
+          I glucidi sono anche fondamentali per il ripristino delle scorte di
+          glicogeno muscolare, specialmente in chi pratica attività fisica. Una
+          loro corretta gestione permette di mantenere performance elevate,
+          ridurre la fatica e migliorare il recupero.
+        </p>
+
+        <p style={{ marginTop: "1rem" }}>
+          Imparare a distinguere le diverse tipologie di carboidrati e il loro
+          impatto metabolico significa assumere il controllo dell’energia
+          quotidiana. Nella filosofia <strong>Nutrition Spiral</strong>, i glucidi
+          diventano uno strumento consapevole, da dosare con equilibrio per
+          supportare salute e benessere.
+        </p>
     </PageContainer>
   );
 }

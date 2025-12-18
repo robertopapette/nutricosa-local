@@ -31,22 +31,24 @@ export default function Aiuto() {
             marginBottom: "1rem",
           }}
         >
-          Come funziona questa sezione
+          Come rilevare le misure manualmente 
         </h2>
         <p>
-          In questa pagina troverai tutte le indicazioni per comprendere e utilizzare correttamente le funzioni
-          disponibili nella sezione “Aggiorna i tuoi dati”.
-          Potrai aggiornare il tuo peso, la circonferenza vita, coscia, braccio e la percentuale di massa grassa.
+          - Usa un metro da sarta.
+          - Effettua sempre la misura nello stesso punto (es. circonferenza addome: zona ombelico).
+          - I muscoli vanno lasciati rilassati.
+          - Non serve estrema precisione: la cosa importante è la costanza.
+          - Le misurazioni aiutano a monitorare i progressi e la % di massa grassa.
+
         </p>
 
+        <p style={{ marginTop: "1rem" }}>
+          Suggerimento: prendi le misure al mattino, a digiuno, sempre nelle stesse condizioni.
+        </p>
+          
         <p style={{ marginTop: "1rem" }}>
           Ogni volta che salvi un aggiornamento, i tuoi progressi vengono registrati nel profilo attivo, così
           potrai monitorare il tuo percorso nel tempo attraverso lo storico e, presto, anche con un grafico dedicato. 📊
-        </p>
-
-        <p style={{ marginTop: "1rem" }}>
-          Se hai dubbi o suggerimenti, contatta il supporto tecnico o lascia un feedback nella sezione “Consigli e
-          suggerimenti”.
         </p>
       </div>
     </PageContainer>
