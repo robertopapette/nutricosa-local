@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
 import PageContainer from "../components/PageContainer";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { theme } from "../theme";
 
-
-export default function DieteFamose() {
+export default function AggiornaDati() {
   const navigate = useNavigate();
   const location = useLocation();
   const bottoniRef = useRef({});
@@ -25,14 +26,17 @@ export default function DieteFamose() {
     { nome: "Dieta Zona", path: "/dieta/zona" },    
   ];
 
-  /* 🔁 ascolta le figlie */
   useEffect(() => {
     const target = location.state?.returnTo;
+    if (!target) return;
 
-    if (target && bottoniRef.current[target]) {
-      bottoniRef.current[target].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
+    const el = bottoniRef.current[target];
+    if (el) {
+      requestAnimationFrame(() => {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       });
     }
   }, [location.state]);
@@ -42,19 +46,32 @@ export default function DieteFamose() {
       titolo="Le principali diete famose"
       sottotitolo="Comprendere gli approcci alimentari prima di seguirli"
     >
-      <div style={{ padding: "1rem" }}>
-        <div
+      <div
+        style={{
+          maxWidth: "850px",
+          margin: "2rem auto",
+          padding: "1.8rem",
+          background: "rgba(255,255,255,0.9)",
+          borderRadius: "12px",
+          boxShadow: "0 3px 8px rgba(0,0,0,0.15)",
+          color: "#222",
+          lineHeight: 1.7,
+        }}
+      >
+
+        {/* 🔹 Introduzione motivazionale */}
+        <h2
           style={{
-            maxWidth: "900px",
-            margin: "0 auto 2rem auto",
-            padding: "1.5rem",
-            background: "rgba(255,255,255,0.9)",
-            borderRadius: "12px",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-            color: "#222",
-            lineHeight: 1.7,
+            color: theme.colori.accento,
+            fontWeight: "700",
+            fontSize: "1.4rem",
+            marginBottom: "1rem",
+            textAlign: "center",
           }}
         >
+          Scopri il tuo percorso di crescita
+        </h2>
+
         <p>
           Le cosiddette <strong>diete famose</strong> rappresentano approcci
           alimentari nati in contesti storici, culturali, scientifici e talvolta
@@ -90,8 +107,7 @@ export default function DieteFamose() {
         </p>
 
 
-        </div>
-
+        
         {/* 🔘 BOTTONI */}
         <div
           style={{
@@ -126,8 +142,21 @@ export default function DieteFamose() {
             >
              {s.nome}
            </button>
-         ))}
+           ))}
         </div>
+
+        {/* 🔹 Nota finale */}
+        <p
+          style={{
+            marginTop: "2.5rem",
+            fontStyle: "italic",
+            textAlign: "center",
+            color: "#333",
+          }}
+        >
+          “La trasformazione inizia quando decidi di conoscerti davvero.”
+        </p>
+        
       </div>
     </PageContainer>
   );
