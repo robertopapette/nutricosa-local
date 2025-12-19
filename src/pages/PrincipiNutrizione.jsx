@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
 import PageContainer from "../components/PageContainer";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { theme } from "../theme";
 
 
 export default function PrincipiNutrizione() {
@@ -20,17 +22,22 @@ export default function PrincipiNutrizione() {
     { nome: "Dolci", path: "/principi/dolci" },
   ];
 
-  /* 🔁 ascolta le figlie */
-  useEffect(() => {
-    const target = location.state?.returnTo;
+    useEffect(() => {
+      const target = location.state?.returnTo;
+      if (!target) return;
 
-    if (target && bottoniRef.current[target]) {
-      bottoniRef.current[target].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [location.state]);
+      const el = bottoniRef.current[target];
+      if (el) {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        });
+      }
+    }, [location.state]);
+
+
 
   return (
     <PageContainer
@@ -50,7 +57,19 @@ export default function PrincipiNutrizione() {
             lineHeight: 1.7,
           }}
         >
-          
+         {/* 🔹 Introduzione motivazionale */}
+         <h2
+           style={{
+             color: theme.colori.accento,
+             fontWeight: "700",
+             fontSize: "1.4rem",
+             marginBottom: "1rem",
+             textAlign: "center",
+           }}
+         >
+           Scopri il tuo percorso di crescita
+          </h2>
+                   
           <p>
             La nutrizione non è semplicemente l’atto di mangiare, ma un processo
             complesso attraverso il quale l’organismo interagisce con ciò che
