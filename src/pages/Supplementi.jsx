@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
 import PageContainer from "../components/PageContainer";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { theme } from "../theme";
 
 
 export default function Supplementi() {
@@ -20,11 +22,15 @@ export default function Supplementi() {
   /* 🔁 ascolta le figlie */
   useEffect(() => {
     const target = location.state?.returnTo;
+    if (!target) return;
 
-    if (target && bottoniRef.current[target]) {
-      bottoniRef.current[target].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
+    const el = bottoniRef.current[target];
+    if (el) {
+      requestAnimationFrame(() => {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       });
     }
   }, [location.state]);
@@ -34,19 +40,30 @@ export default function Supplementi() {
       titolo="Test 💊 Supplementi"
       sottotitolo="Conoscere prima di assumere"
     >
-      <div style={{ padding: "1rem" }}>
-        <div
-          style={{
-            maxWidth: "900px",
-            margin: "0 auto 2rem auto",
-            padding: "1.5rem",
-            background: "rgba(255,255,255,0.9)",
-            borderRadius: "12px",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-            color: "#222",
-            lineHeight: 1.7,
-          }}
+      <div
+        style={{
+          maxWidth: "850px",
+          margin: "2rem auto",
+          padding: "1.8rem",
+          background: "rgba(255,255,255,0.9)",
+          borderRadius: "12px",
+          boxShadow: "0 3px 8px rgba(0,0,0,0.15)",
+          color: "#222",
+          lineHeight: 1.7,
+        }}
       >  
+        {/* 🔹 Introduzione motivazionale */}
+        <h2
+          style={{
+            color: theme.colori.accento,
+            fontWeight: "700",
+            fontSize: "1.4rem",
+            marginBottom: "1rem",
+            textAlign: "center",
+          }}
+        >
+          Scopri il tuo percorso di crescita
+        </h2>
 
         <p>
           Il termine <strong>supplemento</strong> indica tutto ciò che viene
@@ -84,7 +101,7 @@ export default function Supplementi() {
           La vera forza non nasce dall’assumere di più, ma dal
           <strong> capire meglio</strong>.
         </p>
-      </div>
+
 
         {/* 🔘 BOTTONI */}
         <div
